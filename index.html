@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Click App</title>
+</head>
+<body>
+  <h1>Rate Limited Button Clicks</h1>
+  <button id="blueButton">Blue Button</button>
+  <button id="redButton">Red Button</button>
+  <p id="statusMessage"></p>
+
+  <script>
+    // Handle Blue button click
+    document.getElementById('blueButton').addEventListener('click', async () => {
+      const res = await fetch('/click-blue', { method: 'POST' });
+      const data = await res.json();
+      document.getElementById('statusMessage').textContent = data.message;
+      if (res.status === 429) {
+        alert('Blue button rate limit exceeded!');
+      }
+    });
+
+    // Handle Red button click
+    document.getElementById('redButton').addEventListener('click', async () => {
+      const res = await fetch('/click-red', { method: 'POST' });
+      const data = await res.json();
+      document.getElementById('statusMessage').textContent = data.message;
+      if (res.status === 429) {
+        alert('Red button rate limit exceeded!');
+      }
+    });
+  </script>
+</body>
+</html>

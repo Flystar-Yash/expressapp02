@@ -1,0 +1,12 @@
+{
+    "name": "express-app02",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^18",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@pulumi/gcp": "^8.10.0",
+        "@pulumi/pulumi": "^3.142.0"
+    }
+}
